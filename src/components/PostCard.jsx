@@ -1,4 +1,10 @@
-import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal } from "lucide-react";
+import {
+  Heart,
+  MessageCircle,
+  Send,
+  Bookmark,
+  MoreHorizontal,
+} from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
@@ -11,7 +17,7 @@ import {
 import { useState } from "react";
 
 const PostCard = ({
- 
+  
   username,
   userAvatar,
   postImage,
@@ -78,9 +84,11 @@ const PostCard = ({
               variant="ghost"
               size="icon"
               onClick={handleLike}
-              className={`h-8 w-8 like-animation ${liked ? "text-social-like" : ""}`}
+              className={`h-8 w-8 like-animation cursor-pointer ${
+                liked ? "text-red-500" : ""
+              }`}
             >
-              <Heart className={`h-6 w-6 ${liked ? "fill-current" : ""}`} />
+              <Heart className={`h-6 w-6 ${liked ? "fill-red-500" : ""}`} />
             </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8">
               <MessageCircle className="h-6 w-6" />

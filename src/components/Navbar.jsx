@@ -27,7 +27,7 @@ const Navbar = ({  onCreatePost }) => {
             <Link to="/profile">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="" alt="Profile" />
-                <AvatarFallback>JD</AvatarFallback>
+                <AvatarFallback>MG</AvatarFallback>
               </Avatar>
             </Link>
           </div>

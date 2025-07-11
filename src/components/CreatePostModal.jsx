@@ -9,8 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from "@/components/ui/dialog";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+} from "../components/ui/dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { ImagePlus, X } from "lucide-react";
 
 const CreatePostModal = ({ isOpen, onClose, onPost }) => {
@@ -88,9 +88,9 @@ const CreatePostModal = ({ isOpen, onClose, onPost }) => {
           <div className="flex items-center space-x-3">
             <Avatar className="h-8 w-8">
               <AvatarImage src="" alt="Your profile" />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarFallback>AB</AvatarFallback>
             </Avatar>
-            <span className="font-semibold">johndoe</span>
+            <span className="font-semibold">theamnabb</span>
           </div>
 
           {/* Image Upload */}
@@ -158,7 +158,7 @@ const CreatePostModal = ({ isOpen, onClose, onPost }) => {
           <Button
             onClick={handlePost}
             disabled={isPosting || !selectedImage}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto bg-amber-500 hover:bg-amber-600 cursor-pointer text-black"
           >
             {isPosting ? "Posting..." : "Share"}
           </Button>

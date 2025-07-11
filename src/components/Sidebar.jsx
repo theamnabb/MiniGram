@@ -1,4 +1,14 @@
-import { Home, Heart, PlusSquare, Search, MessageCircle, Bell, User, Menu, Bookmark } from "lucide-react";
+import {
+  Home,
+  Heart,
+  PlusSquare,
+  Search,
+  MessageCircle,
+  Bell,
+  User,
+  Menu,
+  Bookmark,
+} from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Link, useLocation } from "react-router-dom";
@@ -19,13 +29,16 @@ const Sidebar = ({ onLogout, onCreatePost }) => {
   ];
 
   return (
-    <aside className={`fixed left-0 top-0 z-40 h-screen border-r bg-background transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"}`}>
+    <aside
+      className={`fixed left-0 top-0 z-40 h-screen border-r bg-background transition-all duration-300 ${
+        isCollapsed ? "w-16" : "w-64"
+      }`}
+    >
       <div className="flex h-full flex-col">
         {/* Header */}
         <div className="flex h-16 items-center justify-between border-b px-4">
           {!isCollapsed && (
             <Link to="/feed" className="flex items-center space-x-2">
-
               <span className="text-xl font-bold">MiniGram</span>
             </Link>
           )}
@@ -52,9 +65,13 @@ const Sidebar = ({ onLogout, onCreatePost }) => {
                   variant={isActive ? "default" : "ghost"}
                   size={isCollapsed ? "icon" : "sm"}
                   onClick={item.action}
-                  className={`w-full justify-start text-left ${isCollapsed ? "px-2" : ""}`}
+                  className={`w-full justify-start text-left ${
+                    isCollapsed ? "px-2" : ""
+                  }`}
                 >
-                  <IconComponent className={`h-5 w-5 ${!isCollapsed ? "mr-3" : ""}`} />
+                  <IconComponent
+                    className={`h-5 w-5 ${!isCollapsed ? "mr-3" : ""}`}
+                  />
                   {!isCollapsed && <span>{item.label}</span>}
                 </Button>
               );
@@ -63,13 +80,19 @@ const Sidebar = ({ onLogout, onCreatePost }) => {
             return (
               <Button
                 key={index}
-                variant={isActive ? "default" : "ghost"}
+                variant="ghost"
                 size={isCollapsed ? "icon" : "sm"}
                 asChild
-                className={`w-full justify-start text-left ${isCollapsed ? "px-2" : ""}`}
+                className={`w-full justify-start text-left ${
+                  isActive
+                    ? "bg-amber-500 text-black hover:bg-amber-500"
+                    : "hover:bg-amber-200 "
+                } ${isCollapsed ? "px-2" : ""}`}
               >
                 <Link to={item.path || "#"}>
-                  <IconComponent className={`h-5 w-5 ${!isCollapsed ? "mr-3" : ""}`} />
+                  <IconComponent
+                    className={`h-5 w-5 ${!isCollapsed ? "mr-3" : ""}`}
+                  />
                   {!isCollapsed && <span>{item.label}</span>}
                 </Link>
               </Button>
@@ -79,15 +102,21 @@ const Sidebar = ({ onLogout, onCreatePost }) => {
 
         {/* User Profile */}
         <div className="border-t p-4">
-          <div className={`flex items-center space-x-3 ${isCollapsed ? "justify-center" : ""}`}>
+          <div
+            className={`flex items-center space-x-3 ${
+              isCollapsed ? "justify-center" : ""
+            }`}
+          >
             <Avatar className="h-8 w-8">
               <AvatarImage src="" alt="Profile" />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarFallback>AB</AvatarFallback>
             </Avatar>
             {!isCollapsed && (
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium truncate">John Doe</p>
-                <p className="text-xs text-muted-foreground truncate">@johndoe</p>
+                <p className="text-sm font-medium truncate">Amna BB</p>
+                <p className="text-xs text-muted-foreground truncate">
+                  @theamnabb
+                </p>
               </div>
             )}
           </div>

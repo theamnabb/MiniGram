@@ -52,7 +52,7 @@ const Feed = ({ onLogout }) => {
   const handleCreatePost = (postData) => {
     const newPost = {
       id: Date.now().toString(),
-      username: "johndoe",
+      username: "theamnabb",
       userAvatar: "",
       postImage: postData.image,
       caption: postData.caption,
