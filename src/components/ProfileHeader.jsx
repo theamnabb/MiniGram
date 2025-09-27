@@ -31,7 +31,7 @@ const ProfileHeader = ({
         <div className="flex-1 space-y-4">
           {/* Username and Actions */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <h1 className="text-xl font-light">{username}</h1>
+            <h1 className="text-2xl font-light">{username}</h1>
             <div className="flex gap-2">
               {isOwnProfile ? (
                 <Button variant="secondary" size="sm" onClick={onEditProfile}>
