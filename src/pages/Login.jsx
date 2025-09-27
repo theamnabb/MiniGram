@@ -50,7 +50,7 @@ const Login = ({ onLogin }) => {
         {/* Login Form */}
         <Card>
           <CardHeader className="text-center">
-            <CardTitle>Welcome back</CardTitle>
+            <CardTitle className="text-3xl">Welcome back</CardTitle>
             <CardDescription>
               Sign in to your account to continue
             </CardDescription>
@@ -96,7 +96,7 @@ const Login = ({ onLogin }) => {
               </div>
               <Button
                 type="submit"
-                className="w-full"
+                className="w-full bg-amber-300 text-black cursor-pointer hover:bg-amber-500"
                 disabled={isLoading}
               >
                 {isLoading ? "Signing in..." : "Sign in"}

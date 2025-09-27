@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
-// import Index from "./pages/Index";
+import Index from "./pages/Index";
 import Login from "./pages/Login";
-// import Register from "./pages/Register";
-// import Feed from "./pages/Feed";
-// import Profile from "./pages/Profile";
-// import Notifications from "./pages/Notifications";
-// import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
+import Feed from "./pages/Feed";
+import Profile from "./pages/Profile";
+import Notifications from "./pages/Notifications";
+import NotFound from "./pages/NotFound";
 // import { Toaster } from "./components/ui/toaster";
 
 function App() {
@@ -71,7 +71,7 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Toaster />
+        {/* <Toaster /> */}
       </div>
     </Router>
   );
