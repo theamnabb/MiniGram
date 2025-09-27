@@ -50,7 +50,7 @@ const Login = ({ onLogin }) => {
         {/* Login Form */}
         <Card>
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl">Welcome back</CardTitle>
+            <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
             <CardDescription>
               Sign in to your account to continue
             </CardDescription>
