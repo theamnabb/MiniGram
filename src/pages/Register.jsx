@@ -6,9 +6,16 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Separator } from "../components/ui/separator";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import { UserData } from "@/context/UserContex";
+
+import { useNavigate } from "react-router-dom";
+
 
 
 const Register = ({ onRegister }) => {
+
+const navigate = useNavigate();
+  const {registerUser} = UserData();
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -20,11 +27,11 @@ const Register = ({ onRegister }) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const showToast = (title, description, variant) => {
-    // Simple toast implementation without custom hook
-    console.log(`Toast: ${title} - ${description} (${variant})`);
-    // You could implement a simple toast mechanism here
-  };
+  // const showToast = (title, description, variant) => {
+  //   // Simple toast implementation without custom hook
+  //   console.log(`Toast: ${title} - ${description} (${variant})`);
+  //   // You could implement a simple toast mechanism here
+  // };
 
   const handleChange = (e) => {
     setFormData({
@@ -35,6 +42,8 @@ const Register = ({ onRegister }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+   
+
     
     if (!formData.email || !formData.username || !formData.fullName || !formData.password) {
       showToast(
@@ -64,16 +73,21 @@ const Register = ({ onRegister }) => {
     }
 
     setIsLoading(true);
+  const apiData = {
+    email: formData.email,
+    username: formData.username,
+    fullName: formData.fullName,
+    password: formData.password,
+  };
+    const success = await registerUser(apiData);
+
+    setIsLoading(false);
+
+    if (success) {
+      navigate("/login");
+    }
     
-    // Simulate API call
-    setTimeout(() => {
-      showToast(
-        "Account created!",
-        "Welcome to MiniGram! You can now start sharing your moments."
-      );
-      setIsLoading(false);
-      onRegister();
-    }, 1500);
+    
   };
 
   return (

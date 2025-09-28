@@ -6,17 +6,19 @@ import { Grid, Bookmark, Tag } from "lucide-react";
 import samplePost1 from "../assets/sample-post-1.jpg";
 import samplePost2 from "../assets/sample-post-2.jpg";
 import samplePost3 from "../assets/sample-post-3.jpg";
+import { UserData } from "@/context/UserContex";
 
 const Profile = ({ onLogout }) => {
+   const { user, isLoading } = UserData();
   // Sample user data
   const userData = {
-    username: "theamnabb",
-    displayName: "Amna BB",
+    username: user.username,
+    displayName: user.fullName,
     bio: "📸 Software Engineer\n🌍 Travel lover\n☕ Coffee addict",
     avatar: "",
     postsCount: 42,
-    followersCount: 1234,
-    followingCount: 567,
+    followersCount: user.followers,
+    followingCount: user.followings,
     isOwnProfile: true,
   };
 

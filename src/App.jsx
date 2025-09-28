@@ -7,10 +7,16 @@ import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
+
 // import { Toaster } from "./components/ui/toaster";
 
 function App() {
+
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  // will do in future
+  //const{loading, isAuth, user} = UserData();
 
   const handleLogin = () => {
     setIsAuthenticated(true);
