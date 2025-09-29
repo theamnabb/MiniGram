@@ -10,16 +10,16 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react(),tailwindcss()],
-  server: {
-  proxy: {
-    "/api": {
-      target: "https://minigram-1-nzn2.onrender.com",
-      changeOrigin: true,
-      secure: false,
-    }
-  }
-}
-,
+//   server: {
+//   proxy: {
+//     "/api": {
+//       target: "http://localhost:3000",
+//       changeOrigin: true,
+//       secure: false,
+//     }
+//   }
+// }
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
