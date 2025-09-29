@@ -9,24 +9,36 @@ import cors from "cors";
 
 import cloundinary from "cloudinary"
 
+dotenv.config();
+
+
 cloundinary.v2.config({
     cloud_name :process.env.Cloudinary_Cloud_Name,
     api_key : process.env.Cloudinary_Api,
     api_secret : process.env.Cloudinary_Secret
 })
 
-dotenv.config();
+
 
 const app = express()
-app.use(express.json())
-app.use(cookieParser())
-app.use(cors());
 
+const allowedOrigins = [
+  "http://localhost:5173",         // local dev
+  "https://social-networking-lemon.vercel.app" // your frontend domain on Vercel
+];
 
 app.use(cors({
-  origin: "http://localhost:5173", // allow frontend
-  credentials: true
+  origin: allowedOrigins,
+  credentials: true,   // important if using cookies or auth headers
 }));
+
+app.use(express.json())
+app.use(cookieParser())
+
+
+
+
+
 
 
 const port = process.env.PORT;
