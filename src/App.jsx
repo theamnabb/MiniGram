@@ -8,76 +8,64 @@ import Profile from "./pages/Profile";
 import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
 
-// import { Toaster } from "./components/ui/toaster";
+import { UserData } from "@/context/UserContex"; // Make sure this is your context
 
 function App() {
-
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
-  // will do in future
-  //const{loading, isAuth, user} = UserData();
+  const { loading, isAuth, user } = UserData(); // get auth state from context
 
   const handleLogin = () => {
-    setIsAuthenticated(true);
+    // optional, context should manage it
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
+    // optional, context should manage it
   };
 
   const handleRegister = () => {
-    setIsAuthenticated(true);
+    // optional, context should manage it
   };
+
+  if (loading) {
+    // Show loader while checking auth
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <Router>
       <div className="min-h-screen bg-background">
         <Routes>
-          {/* <Route path="/" element={<Index />} /> */}
           <Route 
             path="/login" 
             element={
-              isAuthenticated ? 
-              <Navigate to="/feed" replace /> : 
-              <Login onLogin={handleLogin} />
+              isAuth ? <Navigate to="/feed" replace /> : <Login onLogin={handleLogin} />
             } 
           />
           <Route 
             path="/register" 
             element={
-              isAuthenticated ? 
-              <Navigate to="/feed" replace /> : 
-              <Register onRegister={handleRegister} />
+              isAuth ? <Navigate to="/feed" replace /> : <Register onRegister={handleRegister} />
             } 
           />
           <Route 
             path="/feed" 
             element={
-              isAuthenticated ? 
-              <Feed onLogout={handleLogout} /> : 
-              <Navigate to="/login" replace />
+              isAuth ? <Feed onLogout={handleLogout} /> : <Navigate to="/login" replace />
             } 
           />
           <Route 
             path="/profile" 
             element={
-              isAuthenticated ? 
-              <Profile onLogout={handleLogout} /> : 
-              <Navigate to="/login" replace />
+              isAuth ? <Profile onLogout={handleLogout} /> : <Navigate to="/login" replace />
             } 
           />
           <Route 
             path="/notifications" 
             element={
-              isAuthenticated ? 
-              <Notifications onLogout={handleLogout} /> : 
-              <Navigate to="/login" replace />
+              isAuth ? <Notifications onLogout={handleLogout} /> : <Navigate to="/login" replace />
             } 
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* <Toaster /> */}
       </div>
     </Router>
   );

@@ -5,6 +5,7 @@ import  userRoutes from './routes/userRoutes.js'
 import  authRoutes from './routes/authRoutes.js'
 import  postRoutes from './routes/postRoutes.js'
 import cookieParser from "cookie-parser" 
+import cors from "cors";
 
 import cloundinary from "cloudinary"
 
@@ -19,6 +20,7 @@ dotenv.config();
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors());
 
 const port = process.env.PORT;
 

@@ -15,7 +15,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { UserData } from "@/context/UserContex";
 const Sidebar = ({ onLogout, onCreatePost }) => {
-   const {user} = UserData();
+   const {user,logoutUser} = UserData();
+  
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -125,7 +126,7 @@ const Sidebar = ({ onLogout, onCreatePost }) => {
             <Button
               variant="ghost"
               size="sm"
-              onClick={onLogout}
+              onClick={logoutUser}
               className="mt-2 w-full text-left text-muted-foreground hover:text-foreground"
             >
               Log out

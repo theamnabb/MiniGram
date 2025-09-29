@@ -45,6 +45,17 @@ async function registerUser(data) {
         
     }
 
+    async function logoutUser() {
+    try {
+      await axios.get("/api/auth/logout", {}, { withCredentials: true });
+      setUser(null);
+      setIsAuth(false);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Logout failed:", error.response?.data?.message || error.message);
+    }
+  }
+
     async function fetchUser() {
         try {
             const {data} = await axios.get('/api/user/me')
@@ -86,7 +97,7 @@ async function registerUser(data) {
 
 
     return (
-        <UserContext.Provider value={{loginUser,isAuth,user,setUser,loading,registerUser,createPost}}>
+        <UserContext.Provider value={{loginUser,isAuth,user,setUser,loading,registerUser,createPost,logoutUser}}>
             {children} <Toaster/>
         </UserContext.Provider>
     )
