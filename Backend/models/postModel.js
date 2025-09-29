@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { type } from "os";
 
 const postSchema = new mongoose.Schema({
-    capiton:String,
+    caption:String,
     post : {
         id: String,
         url :String

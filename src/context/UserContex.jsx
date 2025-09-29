@@ -60,21 +60,24 @@ async function registerUser(data) {
         }
     }
 
-//   async function logoutUser(){
-//     try {
-//         const {data} = await axios.get('/api/auth/logout')
-//         if(data.message){
-//             toast.success(data.message);
-//             setUser([])
-//             setIsAuth(false);
-           
-//         }
-        
-//     } catch (error) {
-//         toast.error(error.response.data.message)
-        
-//     }
-//   }
+  async function createPost(file, caption, type = "post") {
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("caption", caption);
+    formData.append("type", type);
+
+    const { data } = await axios.post("/api/post/new",formData)
+    
+
+    toast.success(data.message);
+    return data.post; 
+  } catch (error) {
+    toast.error(error?.response?.data?.message || "Post creation failed");
+    return null;
+  }
+}
+
 
 
     useEffect(() =>{
@@ -83,7 +86,7 @@ async function registerUser(data) {
 
 
     return (
-        <UserContext.Provider value={{loginUser,isAuth,user,setUser,loading,registerUser}}>
+        <UserContext.Provider value={{loginUser,isAuth,user,setUser,loading,registerUser,createPost}}>
             {children} <Toaster/>
         </UserContext.Provider>
     )

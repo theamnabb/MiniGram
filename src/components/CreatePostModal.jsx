@@ -10,10 +10,14 @@ import {
   DialogTitle,
   DialogFooter,
 } from "../components/ui/dialog";
+import { UserData } from "@/context/UserContex";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { ImagePlus, X } from "lucide-react";
 
 const CreatePostModal = ({ isOpen, onClose, onPost }) => {
+    const {user} = UserData();
+    
+
   const [caption, setCaption] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [isPosting, setIsPosting] = useState(false);
@@ -90,7 +94,7 @@ const CreatePostModal = ({ isOpen, onClose, onPost }) => {
               <AvatarImage src="" alt="Your profile" />
               <AvatarFallback>AB</AvatarFallback>
             </Avatar>
-            <span className="font-semibold">theamnabb</span>
+            <span className="font-semibold">{user.fullName}</span>
           </div>
 
           {/* Image Upload */}

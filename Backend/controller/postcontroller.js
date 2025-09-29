@@ -55,7 +55,7 @@ export const deletePost = TryCatch(async(req,res) =>{
 export const getAllPosts = TryCatch(async(req,res) =>{
     const posts = await Post.find({type: "post"}).sort({createdAt: -1}).populate("owner");
 
-    const reels = await Post.find({type:"post"}).sort({createdAt:-1}).populate("owner");
+    const reels = await Post.find({type:"reel"}).sort({createdAt:-1}).populate("owner");
     res.json({posts,reels})
 
 })
@@ -123,6 +123,10 @@ const comment = post.comments[commentIndex]
 if(post.owner.toString() ===  req.user._id.toString() || comment.user.toString() === req.user._id.toString()){
     post.comments.splice(commentIndex,1)
     await post.save();
+await cloudinary.v2.uploader.destroy(post.post.id, {
+  resource_type: post.type === "reel" ? "video" : "image",
+});
+await post.deleteOne();
 
     return res.json({
         message : "Comment deleted"
@@ -146,7 +150,7 @@ export const editCaption = TryCatch(async(req,res) =>{
         return res.status(403).json({
     message : "You are not owner of this post "});
 
-    post.capiton = req.body.caption;
+    post.caption = req.body.caption;
     await post.save();
     res.json({
         message : "post updated "

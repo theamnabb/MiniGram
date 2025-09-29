@@ -27,11 +27,11 @@ const navigate = useNavigate();
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const showToast = (title, description, variant) => {
-  //   // Simple toast implementation without custom hook
-  //   console.log(`Toast: ${title} - ${description} (${variant})`);
-  //   // You could implement a simple toast mechanism here
-  // };
+  const showToast = (title, description, variant) => {
+    // Simple toast implementation without custom hook
+    console.log(`Toast: ${title} - ${description} (${variant})`);
+    // You could implement a simple toast mechanism here
+  };
 
   const handleChange = (e) => {
     setFormData({

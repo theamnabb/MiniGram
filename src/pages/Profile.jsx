@@ -9,7 +9,7 @@ import samplePost3 from "../assets/sample-post-3.jpg";
 import { UserData } from "@/context/UserContex";
 
 const Profile = ({ onLogout }) => {
-   const { user, isLoading } = UserData();
+   const { user } = UserData();
   // Sample user data
   const userData = {
     username: user.username,

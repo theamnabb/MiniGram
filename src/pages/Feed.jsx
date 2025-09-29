@@ -8,8 +8,10 @@ import { Plus } from "lucide-react";
 import samplePost1 from "../assets/sample-post-1.jpg";
 import samplePost2 from "../assets/sample-post-2.jpg";
 import samplePost3 from "../assets/sample-post-3.jpg";
+import { UserData } from "@/context/UserContex";
 
 const Feed = ({ onLogout }) => {
+  const {user} = UserData();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   // Sample posts data
@@ -52,7 +54,7 @@ const Feed = ({ onLogout }) => {
   const handleCreatePost = (postData) => {
     const newPost = {
       id: Date.now().toString(),
-      username: "theamnabb",
+      username: user.fullName,
       userAvatar: "",
       postImage: postData.image,
       caption: postData.caption,

@@ -13,8 +13,9 @@ import { Button } from "../components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-
+import { UserData } from "@/context/UserContex";
 const Sidebar = ({ onLogout, onCreatePost }) => {
+   const {user} = UserData();
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -113,9 +114,9 @@ const Sidebar = ({ onLogout, onCreatePost }) => {
             </Avatar>
             {!isCollapsed && (
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium truncate">Amna BB</p>
+                <p className="text-sm font-medium truncate">{user.fullName}</p>
                 <p className="text-xs text-muted-foreground truncate">
-                  @theamnabb
+                  @{user.username}
                 </p>
               </div>
             )}
