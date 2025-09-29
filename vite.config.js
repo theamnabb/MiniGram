@@ -19,6 +19,9 @@ export default defineConfig({
 //     }
 //   }
 // }
+server: {
+    historyApiFallback: true
+  },
 
   resolve: {
     alias: {
@@ -26,3 +29,10 @@ export default defineConfig({
     },
   },
 });
+
+
+
+
+
+
+

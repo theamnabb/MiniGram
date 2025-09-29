@@ -7,6 +7,8 @@ import Feed from "./pages/Feed";
 import Profile from "./pages/Profile";
 import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
+import Search from "./pages/Search"; 
+import Messages from "./pages/Messages"; // ✅ Import Messages component
 
 import { UserData } from "@/context/UserContex"; // Make sure this is your context
 
@@ -46,6 +48,8 @@ function App() {
               isAuth ? <Navigate to="/feed" replace /> : <Register onRegister={handleRegister} />
             } 
           />
+           <Route path="/messages" element={<Messages onLogout={handleLogout} />} /> {/* ✅ Added Messages Route */}
+            <Route path="/search" element={<Search />} />
           <Route 
             path="/feed" 
             element={
