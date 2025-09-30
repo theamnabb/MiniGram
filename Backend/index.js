@@ -27,10 +27,18 @@ const allowedOrigins = [
   "https://minisocial-beta.vercel.app" // your frontend domain on Vercel
 ];
 
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,   // important if using cookies or auth headers
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS not allowed for this origin"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(express.json())
 app.use(cookieParser())
