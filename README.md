@@ -48,4 +48,3 @@ npm run dev
 
 - 💬 Add comments system
 
-- 📱 Add stories feature
