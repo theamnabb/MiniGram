@@ -24,7 +24,7 @@ const app = express()
 
 const allowedOrigins = [
   "http://localhost:5173",         // local dev
-  "https://social-networking-lemon.vercel.app" // your frontend domain on Vercel
+  "https://minisocial-beta.vercel.app/" // your frontend domain on Vercel
 ];
 
 app.use(cors({
