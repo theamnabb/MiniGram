@@ -28,9 +28,6 @@ MiniGram lets users create posts, like, save, and manage their profiles with a c
 
 ---
 
-
----
-
 ## ⚙️ Installation
 
 Clone the repo and install dependencies:
